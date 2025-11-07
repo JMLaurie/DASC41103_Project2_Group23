@@ -1,80 +1,85 @@
-DASC41103 Project 2 — Group 23
-🚀 Project Objective
-Predict whether an individual's income exceeds $50K/year using neural networks and census data.
-This project showcases the effectiveness of a Multi-Layer Perceptron (MLP) for tabular classification and explores how data processing and hyperparameter tuning impact model performance.
+DASC41103 Project 2 – Group 23
 
-👥 Group Members
-[Add members' names here]
+🚀 Overview
+This project applies a Multi-Layer Perceptron (MLP) neural network to predict whether an individual earns more than $50,000 per year using the UCI Adult Income dataset. The workflow includes:
 
-📊 Dataset Description
-Source: UCI Machine Learning Repository — Adult (Census Income) dataset
+Data preprocessing and feature engineering
 
-Features: Age, education, occupation, marital status, and more
+Model building and hyperparameter tuning
 
-Target: Income category (<=50K or >50K per year)
+Evaluation and reporting
 
-🤖 Algorithm & Methods
-Model: Multi-Layer Perceptron (MLP) with PyTorch and skorch
-
-Preprocessing:
-
-Dropped unnamed/index columns
-
-Imputed missing values (mean/mode)
-
-One-Hot Encoding for categoricals, Standard Scaling for numerics
-
-Label Encoding for the target
-
-Training: Stratified 80/20 train-test split
-
-Hyperparameter Tuning: Used GridSearchCV for:
-
-Learning rate
-
-Batch size
-
-Optimizer (Adam, SGD)
-
-Number of epochs
-
-Hidden layer sizes & number of layers
-
-Dropout rate
-
-Activation function (ReLU, Tanh, Sigmoid)
-
-Evaluation: Cross-entropy loss, accuracy, precision, recall, F1-score
-
-📈 Model Evaluation
-Best Accuracy: ~85% (stratified cross-validation)
-
-Key Metrics: Accuracy, precision, recall, F1-score on test set
-
-Findings: Optimal results with ReLU activation, dropout, and SGD optimizer. Tuning had a significant effect.
-
-📝 Results Summary
-MLP matches classical ML models on tabular data when optimized
-
-Best architecture: ReLU + SGD + Dropout
-
-Importance of preprocessing and tuning: Critical for deep learning success
-
-Limitations: Sensitive to feature scaling and hyperparameters
-
-🛠️ How To Run
-Clone the repo
-
-Install requirements:
-pip install torch sklearn skorch pandas numpy
-
-Place data files in /Data
-
-Open and run MLP_Final.ipynb
+Comparative analysis with classical machine learning models
 
 📁 Repository Structure
-/Code: Source code and Jupyter notebooks
+text
+Code/
+│   └── MLP_Final.ipynb         # Main notebook with full analysis and implementation
 
-/Data: Dataset files
+Data/
+│   ├── project_adult.csv       # Training and test dataset
+│   └── project_validation.csv  # Additional/validation inputs
 
-/Output: Model results, figures
+Output/
+│   ├── results.csv             # Model predictions and evaluation metrics
+│   └── figures/                # Visualization outputs
+
+README.md                       # Project summary and analysis
+📦 Folder Contents
+Code/: Jupyter notebook containing data processing, model building, results, and analysis.
+
+Data/: Raw census dataset and validation/test files.
+
+Output/: Results, figures, saved metrics, and predictions.
+
+README.md: This file, detailing project goals, workflow, and analysis responses.
+
+📝 Analytical Questions & Answers
+a. What is the objective of the project?
+To predict whether a person's income is greater than $50,000 per year using an MLP model trained on demographic and occupational features from the UCI Adult Income dataset.
+
+b. Who are the group members?
+Jake Laurie
+
+c. What is the dataset and which features are included?
+Adult Income dataset from the UCI ML Repository.
+
+Features: Age, workclass, education, marital status, occupation, relationship, race, sex, hours worked per week, native country.
+
+Target: Income category (<=50K or >50K per year).
+
+d. Which algorithm was used and how was it optimized?
+Algorithm: Multi-Layer Perceptron (MLP) neural network, built with PyTorch/skorch.
+
+Optimization:
+
+Data preprocessing: Drop index columns, fill missing values, encode categoricals, scale numerics.
+
+Hyperparameter tuning: Used GridSearchCV to optimize learning rate, batch size, optimizer (Adam/SGD), epochs, hidden layer structure, dropout, and activation functions (ReLU/Tanh/Sigmoid).
+
+e. How was the model evaluated and what were the results?
+Evaluation Metrics: Accuracy, precision, recall, F1-score (via classification report and confusion matrix).
+
+Results:
+
+Best test accuracy: ~85% using SGD optimizer, ReLU activation, and dropout regularization.
+
+Hyperparameter tuning significantly impacted model performance.
+
+Visualization and analysis revealed the importance of preprocessing and model configuration.
+
+f. What are the key insights and limitations?
+Insights:
+
+MLPs can perform well on tabular data when highly optimized.
+
+Proper feature scaling, encoding, and tuning are essential for neural network success.
+
+Limitations:
+
+Sensitive to hyperparameter settings and preprocessing.
+
+May be outperformed by simpler models if not carefully tuned.
+
+👥 Authors
+[Add group member names here]
