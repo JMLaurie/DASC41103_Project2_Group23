@@ -1,5 +1,4 @@
 DASC41103 Project 2 – Group 23
-
 🚀 Overview
 This project applies a Multi-Layer Perceptron (MLP) neural network to predict whether an individual earns more than $50,000 per year using the UCI Adult Income dataset. The workflow includes:
 
@@ -12,74 +11,48 @@ Evaluation and reporting
 Comparative analysis with classical machine learning models
 
 📁 Repository Structure
-text
-Code/
-│   └── MLP_Final.ipynb         # Main notebook with full analysis and implementation
+Code/: Contains MLP_Final.ipynb – main notebook with full analysis and implementation
 
-Data/
-│   ├── project_adult.csv       # Training and test dataset
-│   └── project_validation.csv  # Additional/validation inputs
+Data/: Census dataset (project_adult.csv) and validation inputs
 
-Output/
-│   ├── results.csv             # Model predictions and evaluation metrics
-│   └── figures/                # Visualization outputs
+Output/: Model predictions, evaluation metrics, and figures
 
-README.md                       # Project summary and analysis
-📦 Folder Contents
-Code/: Jupyter notebook containing data processing, model building, results, and analysis.
-
-Data/: Raw census dataset and validation/test files.
-
-Output/: Results, figures, saved metrics, and predictions.
-
-README.md: This file, detailing project goals, workflow, and analysis responses.
+README.md: Project summary and analysis
 
 📝 Analytical Questions & Answers
-a. What is the objective of the project?
-To predict whether a person's income is greater than $50,000 per year using an MLP model trained on demographic and occupational features from the UCI Adult Income dataset.
+a. Why did you choose the specific architecture (e.g., number of layers, activation functions) for each model?
 
-b. Who are the group members?
-Jake Laurie
+The architecture was chosen based on systematic grid search and cross-validation to balance complexity and generalization. For tabular data like the Adult Income dataset, we used a modest number of hidden layers (typically 1-2) and units to reduce risk of overfitting, following practical recommendations and benchmarks in neural network literature. ReLU was the default activation due to its effectiveness and faster convergence in deep learning tasks, but Tanh/Sigmoid were tested for comparison. Dropout was added for regularization, and SGD/Adam optimizers were evaluated for training stability. Layer depth, activation, and regularization were all tuned using validation set performance and comparative analysis with classical models.​
 
-c. What is the dataset and which features are included?
-Adult Income dataset from the UCI ML Repository.
+b. How did you monitor and mitigate overfitting in your models?
 
-Features: Age, workclass, education, marital status, occupation, relationship, race, sex, hours worked per week, native country.
+Overfitting was monitored by tracking validation accuracy/loss during training. Techniques used:
 
-Target: Income category (<=50K or >50K per year).
+Dropout: Randomly deactivates neurons during training to prevent reliance on specific weights.
 
-d. Which algorithm was used and how was it optimized?
-Algorithm: Multi-Layer Perceptron (MLP) neural network, built with PyTorch/skorch.
+Early Stopping: Training was stopped if validation loss increased for several epochs.
 
-Optimization:
+Regularization: L2 weight penalty was applied.
 
-Data preprocessing: Drop index columns, fill missing values, encode categoricals, scale numerics.
+Data preprocessing and feature engineering: Ensured clean, scaled inputs and encoded categorical variables to improve generalization.
 
-Hyperparameter tuning: Used GridSearchCV to optimize learning rate, batch size, optimizer (Adam/SGD), epochs, hidden layer structure, dropout, and activation functions (ReLU/Tanh/Sigmoid).
+Hyperparameter tuning: Used cross-validation and GridSearchCV to identify model settings that yielded robust validation performance but did not inflate train metrics.​
 
-e. How was the model evaluated and what were the results?
-Evaluation Metrics: Accuracy, precision, recall, F1-score (via classification report and confusion matrix).
+c. What ethical concerns might arise from deploying models trained on these datasets?
 
-Results:
+The Adult Income dataset contains sensitive demographic features, such as gender, race, and age, which can reflect or perpetuate real-world biases if used improperly. Ethical concerns include:
 
-Best test accuracy: ~85% using SGD optimizer, ReLU activation, and dropout regularization.
+Bias amplification: Models may inherit and magnify historical inequalities, resulting in unfair income predictions for certain groups.
 
-Hyperparameter tuning significantly impacted model performance.
+Discrimination risk: Automated decision-making using biased data can reinforce societal injustices.
 
-Visualization and analysis revealed the importance of preprocessing and model configuration.
+Privacy: Potential for misuse of sensitive demographic data.
 
-f. What are the key insights and limitations?
-Insights:
+Responsible deployment should include fairness analysis, bias mitigation steps (such as fairness-aware training), and transparency about limitations.​
 
-MLPs can perform well on tabular data when highly optimized.
+d. Why are activation functions necessary in neural networks?
 
-Proper feature scaling, encoding, and tuning are essential for neural network success.
-
-Limitations:
-
-Sensitive to hyperparameter settings and preprocessing.
-
-May be outperformed by simpler models if not carefully tuned.
+Activation functions are essential because they introduce non-linearity, allowing neural networks to model complex relationships and patterns in the data. Without them, the entire network reduces to a linear transformation, which cannot capture the intricacies required in tasks such as classification or regression. Functions like ReLU, Tanh, and Sigmoid allow networks to approximate highly complex, non-linear systems, enabling successful deep learning on real-world datasets.​
 
 👥 Authors
-[Add group member names here]
+Jake Laurie and Jordan Short
